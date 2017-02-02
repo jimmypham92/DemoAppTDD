@@ -11,6 +11,8 @@ import XCTest
 
 class TDD_DemoTests: XCTestCase {
     
+    let brain = Brain()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -21,16 +23,53 @@ class TDD_DemoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testIsDivisibleByThree() {
+        let result = brain.isDivisibleByThree(3)
+        XCTAssertEqual(result, true)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testIsNotDivisibleByThree() {
+        let result = brain.isDivisibleByThree(1)
+        XCTAssertEqual(result, false)
     }
     
+    func testIsDivisibleByFive() {
+        let result = brain.isDivisibleByFive(5)
+        XCTAssertEqual(result, true)
+    }
+    
+    func testIsNotDivisibleByFive() {
+        let result = brain.isDivisibleByFive(1)
+        XCTAssertEqual(result, false)
+    }
+    
+    func testIsDivisibleBye15() {
+        let result = brain.isDivisibleByFifteen(15)
+        XCTAssertEqual(result, true)
+    }
+    
+    func testIsNotDivisibleBy15() {
+        let result = brain.isDivisibleByFifteen(1)
+        XCTAssertEqual(result, false)
+    }
+    
+    func testSayFizz() {
+        let result = brain.check(3)
+        XCTAssertEqual(result, Move.Fizz)
+    }
+    
+    func testSayBuzz() {
+        let result = brain.check(5)
+        XCTAssertEqual(result, Move.Buzz)
+    }
+    
+    func testSayFizzBuzz() {
+        let result = brain.check(15)
+        XCTAssertEqual(result, Move.FizzBuzz)
+    }
+    
+    func testSayNumber() {
+        let result = brain.check(1)
+        XCTAssertEqual(result, Move.Number)
+    }
 }
